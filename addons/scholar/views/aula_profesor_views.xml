@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="profesor_form_view" model="ir.ui.view">
+            <field name="name">aula.profesor.form</field>
+            <field name="model">aula.profesor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="apellido"/>
+                            <field name="especializacion"/>
+                        </group>
+                        <group>
+                            <field name="aulas_ids" widget="many2many_tags" options="{'no_create': True}"/> </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="profesor_tree_view" model="ir.ui.view">
+            <field name="name">aula.profesor.tree</field>
+            <field name="model">aula.profesor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="apellido"/>
+                    <field name="especializacion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="profesor_action" model="ir.actions.act_window">
+            <field name="name">Profesores</field>
+            <field name="res_model">aula.profesor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Profesores" id="profesor_menu" parent="aula_menu_root" action="profesor_action"/>
+    </data>
+</odoo>

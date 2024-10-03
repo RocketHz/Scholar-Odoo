@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aula_aula_manager,aula_aula_manager,model_aula_aula,,1,1,1,1
+access_aula_materia_manager,aula_materia_manager,model_aula_materia,,1,1,1,1
+access_aula_profesor_manager,aula_profesor_manager,model_aula_profesor,,1,1,1,1
+access_aula_estudiante_manager,aula_estudiante_manager,model_aula_estudiante,,1,1,1,1
+access_aula_horario_manager,aula_horario_manager,model_aula_horario,,1,1,1,1

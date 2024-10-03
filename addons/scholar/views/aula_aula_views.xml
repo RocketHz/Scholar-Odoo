@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="aula_form_view" model="ir.ui.view">
+            <field name="name">aula.form</field>
+            <field name="model">aula.aula</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="numeral"/>
+                            <field name="literal"/>
+                        </group>
+                        <group>
+                            <field name="capacidad"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="materias_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="profesores_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="estudiantes_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                    <group>
+                        <field name="horario_ids" widget="one2many">
+                            <tree editable="bottom">
+                                <field name="aula_id"/>
+                                <field name="dia_semana"/>
+                                <field name="hora_inicio"/>
+                                <field name="hora_fin"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="aula_tree_view" model="ir.ui.view">
+            <field name="name">aula.tree</field>
+            <field name="model">aula.aula</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="numeral"/>
+                    <field name="literal"/>
+                    <field name="capacidad"/>
+                    <field name="materias_text" string="Materias Asignadas"/>
+                    <field name="horario_ids" widget="one2many" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="aula_action" model="ir.actions.act_window">
+            <field name="name">Aulas</field>
+            <field name="res_model">aula.aula</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Aulas" id="aula_menu_root" sequence="1"/>
+
+        <menuitem name="Listado de Aulas" id="aula_menu_list" parent="aula_menu_root" action="aula_action"/>
+    </data>
+</odoo>

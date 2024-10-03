@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="materia_form_view" model="ir.ui.view">
+            <field name="name">aula.materia.form</field>
+            <field name="model">aula.materia</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="profesor_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="horario_ids">
+                            <tree editable="bottom">
+                                <field name="profesor_id"/>
+                                <field name="aula_id"/>
+                                <field name="dia_semana"/>
+                                <field name="hora_inicio"/>
+                                <field name="hora_fin"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="materia_tree_view" model="ir.ui.view">
+            <field name="name">aula.materia.tree</field>
+            <field name="model">aula.materia</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="materia_action" model="ir.actions.act_window">
+            <field name="name">Materias</field>
+            <field name="res_model">aula.materia</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Materias" id="materia_menu" parent="aula_menu_root" action="materia_action"/>
+    </data>
+</odoo>
